@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sign Up</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Montserrat:wght@400;500&family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,500;1,300&family=Poppins:ital,wght@0,200;0,500;0,600;0,700;1,400&family=Quicksand&family=REM:wght@200;300;400;500;600;700;800&family=Roboto:wght@300;400;700&family=Spinnaker&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            display: flex;
+            /* flex-direction: column; */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #E0EFDE;
+        }
+
+        div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            position: relative;
+            background-color: #0B032D;
+            color: white;
+            padding: 2rem 7rem;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: center;
+            position: relative;
+        }
+
+        .signup {
+            margin-bottom: 1.8rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        form input {
+            border: 1px solid #fff;
+            border-radius: 5px;
+            outline: none;
+            padding: 10px 30px;
+            /* border-bottom: 1px solid #fff; */
+            background-color: #0B032D;
+            color: #fff;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        form label {
+            /* position: absolute; */
+            margin-bottom: 5px;
+            margin-right: 10px;
+        }
+
+        .field-1 {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* gap: 1rem; */
+        }
+
+        .field-2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* gap: 1rem; */
+        }
+
+        .email label {
+            margin-right: 50px;
+        }
+
+        .password label {
+            margin-right: 15px;
+        }
+
+        .c-password label {
+            margin-right: 15px;
+        }
+
+        .c-password {
+            margin-bottom: 10px;
+        }
+
+        .signup-btn {
+            margin-top: 10px;
+        }
+
+        .signup-btn {
+            padding: 5px 22px;
+            border-radius: 8px;
+            border: 1px solid black;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .signup-btn:hover {
+            border: 1px solid white;
+            background-color: #0B032D;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"> &times; </span>
+        </button>
+    </div>
+    {% endfor %}
+
+
+    <form action="/signup/" method="post">
+        <h3 class="signup">signup</h3>
+        {% csrf_token %}
+        <div class="field-1">
+            <div>
+                <label for="" class="name-1">username</label>
+                <input type="text" id="username" name="username"
+                    placeholder="Create a username (only letters and numbers)" required>
+            </div>
+
+            <div>
+
+                <label for="" class="name-2">First Name</label>
+                <input type="text" id="fname" name="fname" placeholder="Enter Your First Name" required>
+            </div>
+
+            <div>
+
+                <label for="" class="name-3">Last Name</label>
+                <input type="text" id="lname" name="lname" placeholder="Enter Your Last name" required>
+            </div>
+        </div>
+
+        <div class="field-2">
+            <div class="email">
+
+                <label for="">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter Your Email ID" required>
+            </div>
+
+
+            <div class="password">
+
+                <label for="">Password</label>
+                <input type="password" id="pass1" name="pass1" placeholder="Create a Password" required>
+            </div>
+
+            <div class="c-password">
+
+                <label for="">Confirm <br>Password</label>
+                <input type="password" id="pass2" name="pass2" placeholder="Confirm Your Password" required>
+            </div>
+
+        </div>
+
+
+        <button type="submit" class="signup-btn">signup</button>
+    </form>
+</body>
+
+</html>
